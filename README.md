@@ -1,109 +1,104 @@
-# NOTE
+# Note
 
-We changed to github pages. Please use https://frc2713.github.io/QRScout/ until we redirect http://scout.redhawkrobotics.org
+Ce dépôt est basé sur le projet QRScout original de l'équipe 2713. Tous les crédits leur reviennent.  
+L'objectif principal de ce projet est d'aller au-delà du QRScout original en ajoutant des fonctionnalités comme les avis sur les robots ou une méthode plus efficace que les codes QR.
 
 # QRScout
 
-A QR Code-based scouting system for FRC
+Un système de scouting basé sur les codes QR pour la FRC.
 
-## Getting started
+## Démarrage
 
-QRScout is a web app. To open it, all 3you have to do is visit https://frc2713.github.io/QRScout/
+QRScout est une application web. Pour l'ouvrir, il suffit de visiter : [QRScout](https://frc2713.github.io/QRScout/).
 
-QRScout takes in form data inputed durring a FRC match about the robots playing it, and outputs a QR code with all of that data, in a list seperated by default by tabs. The QR code generated can then be scanned and inputted into something like a Microsoft Excel or Google Sheets spreadsheet, and analyzed.
+QRScout permet de saisir des données sur les robots participant à un match de FRC via un formulaire. Ces informations sont ensuite converties en code QR sous forme de liste, séparée par défaut par des tabulations. Ce code QR peut être scanné et intégré dans un tableur comme Microsoft Excel ou Google Sheets pour analyse.
 
-## Using QRScout
+## Utilisation de QRScout
 
-When you visit QRScout, you're shown a screen that looks something like
-![The QRScout homepage](src/assets/images/main_screen.png)
-At the top, and taking up most of the page, are form fields. These are the input for the data that will later be made into a QRCode.
+Lorsque vous accédez à QRScout, vous verrez un écran ressemblant à ceci :  
+![Page d'accueil de QRScout](src/assets/images/main_screen.png)
 
-Some of these fields are required, and others aren't. QRScout will refuse to let you submit the form until all of the required fields are filled out.
+En haut, la majeure partie de la page est occupée par des champs de formulaire. Ces champs permettent de saisir les données qui seront converties en code QR.
 
-![The bottom of the QRScout homepage](src/assets/images/main_screen_bottom.png)
-Down at the bottom of the page, there are the Commit and Reset Form buttons. The Commit button will generate a QR code of the form data that you filled out above, and display this onscreen to be scanned, alongside the text that is encoded in the QR code. The Reset Form button resets most of the form fields, so that it can be used again without havng to reload the page. It does not reset most of the Prematch column, as most of this data can be reused from match to match.
+Certains champs sont obligatoires, d'autres non. QRScout n'autorisera pas l'envoi du formulaire tant que tous les champs obligatoires ne sont pas remplis.
 
-There are also the Copy Column Names and Edit Config buttons. Clicking Copy Column Names will do what it suggests, and copy the names of each column to your clipboard. The Edit Config button leads you to the `config.json` editor. The three buttons beneath this are used to change from light to dark mode, and set the page to your system theme (the default).
+![Bas de la page d'accueil de QRScout](src/assets/images/main_screen_bottom.png)
 
-> The line delimiter in the text alongside the QRCode is always a comma, regardless of what it set to. In the data in the QRCode and is optionally copied to your clipboard, it will be what you have set it to.
+En bas de la page, plusieurs boutons sont disponibles :
 
-Clicking on Edit Config leads you to the following screen:
-![The config editor](src/assets/images/editor_screen.png)
-The text editor allows you to edit the `config.json` file (see below). Click the Save button to save any changes you make.
+- **Commit** : Génère un code QR avec les données saisies et affiche le texte encodé à côté du code QR.
+- **Reset Form** : Réinitialise la plupart des champs du formulaire sans recharger la page. La colonne "Prematch" conserve ses valeurs pour éviter une ressaisie répétitive.
+- **Copy Column Names** : Copie les noms des colonnes dans le presse-papiers.
+- **Edit Config** : Ouvre l'éditeur `config.json`.
+- Trois boutons supplémentaires permettent de basculer entre les modes clair et sombre ou d'adopter le thème du système (par défaut).
 
-Once you create a custom `config.json` file for your team, there are 2 ways to leverage it in competition:
-1. Download the custom `config.json` file to each tablet / device for your scouts and upload it to QRScout using the "Upload Config" button in the options menu.
-2. Host the custom `config.json` file in a public GitHub repository and load it into QRScout using the "Load from URL" button in the settings menu.
+> Le délimiteur de ligne dans le texte affiché avec le QRCode est toujours une virgule, quel que soit le paramètre défini. Dans les données encodées dans le QRCode et celles copiées dans le presse-papiers, le délimiteur est celui que vous avez configuré.
 
-You can also download the config.json file to your device and reset the config.json to the default.
-![Editor options menu](src/assets/images/editor_options.png)
+En cliquant sur **Edit Config**, vous accédez à cet écran :  
+![Éditeur de configuration](src/assets/images/editor_screen.png)
 
-### Hosting a custom JSON config for your team
+L'éditeur de texte permet de modifier le fichier `config.json`. Cliquez sur **Save** pour enregistrer les modifications.
 
-To host your JSON config in a GitHub repository and make it available publicly via GitHub Pages, follow these steps:
+Une fois que vous avez créé un fichier `config.json` personnalisé pour votre équipe, vous pouvez l'utiliser en compétition de deux façons :
 
-1. Create a new repository on GitHub or use an existing one.
-2. Add your JSON config file to the repository.
-3. Enable GitHub Pages for the repository:
-   - Go to the repository's "Settings" tab.
-   - Scroll down to the "GitHub Pages" section.
-   - Select the branch you want to use for GitHub Pages (e.g., `main`).
-   - Click "Save".
-4. After enabling GitHub Pages, your JSON config file will be available at a URL like `https://<username>.github.io/<repository>/<path-to-config>.json`.
+1. Télécharger le fichier sur chaque tablette ou appareil utilisé et l'importer dans QRScout via le bouton "Upload Config".
+2. Héberger le fichier sur un dépôt GitHub public et l'importer via "Load from URL".
 
-You can now use this URL to load the JSON config in QRScout.
+Il est également possible de télécharger le `config.json` sur votre appareil ou de le réinitialiser à sa version par défaut.  
+![Options de l'éditeur](src/assets/images/editor_options.png)
+
+### Hébergement d'un fichier JSON de configuration personnalisé
+
+Pour héberger votre fichier de configuration sur GitHub et le rendre accessible via GitHub Pages, procédez comme suit :
+
+1. Créez un nouveau dépôt sur GitHub ou utilisez-en un existant.
+2. Ajoutez votre fichier `config.json` au dépôt.
+3. Activez GitHub Pages :
+   - Allez dans l'onglet "Settings" du dépôt.
+   - Faites défiler jusqu'à la section "GitHub Pages".
+   - Sélectionnez la branche à utiliser (ex. : `main`).
+   - Cliquez sur "Save".
+4. Une fois GitHub Pages activé, votre fichier JSON sera disponible à une URL du type :  
+   `https://<nom-utilisateur>.github.io/<nom-du-repo>/<chemin-du-config>.json`
+
+Vous pourrez alors utiliser cette URL pour charger la configuration JSON dans QRScout.
 
 ## config.json
 
-The config.json file is what configures the form fields for QRScout, the page title, the title at the top of your screen, and the line delimiter used in the QRCode.
+Le fichier `config.json` configure les champs du formulaire QRScout, le titre de la page et le caractère délimitant les données du QRCode.
 
-The config.json can be edited to change most parts of QRScout, and change the line delimiter character used by the QRCode.
+La structure de base de `config.json` est la suivante :
 
-The basic structure of the config.json file is as follows:
+### Racine :
 
-### Root:
+- `$schema` : Référence au schéma utilisé par `config.json` (ne pas modifier).
+- `title` : Titre de l'onglet de la page.
+- `page_title` : Titre affiché en haut de la page QRScout.
+- `delimiter` : Délimiteur utilisé dans le QR code.
+- `sections` : Tableau contenant les sections/colonnes du formulaire.
 
-`$schema`: A reference to the schema used by the config.json file. This shouldn't be changed from the default "../schema.json".
+### Sections :
 
-`title`: The title of the page. This is what appears in the tab bar.
+- `name` : Nom de la section/colonne.
+- `fields` : Tableau de champs décrivant les entrées du formulaire.
 
-`page_title`: The title that appears at the top of the QRScout page.
+### Champs individuels :
 
-`delimiter`: The line delimiter used by the QR code
+- `title` : Nom du champ.
+- `type` : Type d'entrée parmi `"text"`, `"number"`, `"boolean"`, `"range"`, `"select"`, `"counter"`, `"image"` ou `"timer"`.
+- `required` : Boolean indiquant si le champ est obligatoire.
+- `code` : Identifiant unique en camelCase.
+- `disabled` : Boolean indiquant si le champ est désactivé.
+- `formResetBehavior` : Comportement lors de la réinitialisation du formulaire :
+  - `reset` : Réinitialise le champ.
+  - `preserve` : Conserve la valeur.
+  - `increment` : Incrémente la valeur selon les paramètres du champ.
+- `choices` : Liste de choix possibles sous forme de clés/valeurs.
 
-`sections`: An array of sections/columns that hold and organize form inputs
-
-### Individual sections:
-
-`name`: The name of the section/column
-
-`fields`: An array of fields, which describe form inputs.
-
-### Individual fields:
-
-`title`: The name of this field
-
-`type`: One of "text", "number", "boolean", "range", "select", "counter", "image" or "timer". Describes the type of input this is.
-
-`required`: a boolean indicating if this must be filled out before the QRCode is generated. If any field with this set to true is not filled out, QRScout will not generate a QRCode when the commit button is pressed.
-
-`code`: camelCase string with a unique name indicaing what this field is.
-
-`disabled`: Boolean indicating if this field is disabled. If it is, things cannot be inputted into it. This and the requied value are mutually exclusive if you want people to be able to submit this form.
-
-`formResetBehavior`: One of "reset", "preserve", or "increment".
-
-- `reset` will reset the field whenver the form resets
-- `preserve` will retain the current value
-- `increment` will increment the value based on the field's settings
-
-`choices`: An object containng numbered keys mapping to values that this can hold. For example:
+Exemple :
 
 ```json
 "choices": {
-    "1": "First option",
-    "2": "Second option"
+    "1": "Première option",
+    "2": "Deuxième option"
 }
-```
-
-`defaultValue`: The default value of this field.
