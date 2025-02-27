@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
     <meta charset="utf-8" />
     <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
     <meta
@@ -30,5 +31,14 @@
   <body>
     <div id="app"></div>
     <script type="module" src="./src/main.tsx"></script>
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(reg => console.log('Service Worker enregistré:', reg))
+          .catch(err => console.error('Erreur lors de l’enregistrement du Service Worker:', err));
+      }
+    </script>
+
   </body>
 </html>

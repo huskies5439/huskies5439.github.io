@@ -4,6 +4,10 @@ module.exports = {
   theme: {
   	extend: {
   		fontFamily: {
+				ss: [
+					'SuperShiny',
+					'sans-serif',
+				],
   			rhr: [
   				'SF Sports Night',
   				'sans-serif'
